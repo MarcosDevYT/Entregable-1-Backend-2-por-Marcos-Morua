@@ -1,0 +1,35 @@
+<main class="max-w-7xl mx-auto py-6 px-4">
+
+  <p class="hidden" id="cartId">{{cartId}}</p>
+
+  <section class="relative p-8 border rounded-lg border-black/10 shadow-lg bg-white">
+
+    <div class="flex flex-row items-center justify-between">
+      <h1 class="font-bold text-2xl">Carrito #{{cart.id}}</h1>
+      <button
+        onclick="handleClear('{{cart.id}}')"
+        class="cursor-pointer w-max text-sm flex items-center w-full justify-center px-3 py-1 rounded-md border border-black/10 text-white bg-black hover:bg-black/90 gap-2 text-lg"
+      >
+        <i class="ri-delete-bin-line text-lg"></i>
+        <span class="hidden md:block font-medium ">
+          Vaciar carrito
+        </span>
+      </button>
+    </div>
+
+    <article id="cartContainer">
+
+      {{#each cart.products}}
+        {{> cardProduct cartId=../cart.id }}
+      {{/each}}
+
+    </article>
+
+    <div id="ModalContainer" class="fixed bottom-8 right-8 z-50"></div>
+
+  </section>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/fetchActions.js"></script>
+  <script src="/cartFunctions.js"></script>
+</main>

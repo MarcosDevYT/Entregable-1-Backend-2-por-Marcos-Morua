@@ -1,0 +1,95 @@
+<main class="container mx-auto py-6 px-4">
+
+  <p class="hidden" id="cartId">{{cartId}}</p>
+
+  {{> search}}
+
+  <section class="p-8 border rounded-lg border-black/10 shadow-lg bg-white">
+
+    <article class="flex justify-between items-center mb-8">
+
+      <h1 class="font-bold text-2xl">Listado de Productos</h1>
+
+      <div class="justify-end items-center flex gap-2">
+
+        {{> limitButton limit=10}}
+
+
+        <button id="modalFormBtn"
+          class="cursor-pointer font-medium text-sm flex items-center justify-center px-3 py-2 rounded-md border border-black/10 text-white bg-black hover:bg-black/90 gap-2">
+                  <span class="md:hidden">
+            <i class="ri-add-line"></i>
+          </span>
+          <span class="hidden md:block">
+            Agregar Producto
+          </span>
+        </button>
+      </div>
+    </article>
+
+    <article class="overflow-x-auto">
+      {{#if products.payload.length}}
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-black/10 hover:bg-black/10">
+              <th class="font-medium text-left text-base px-2 py-2 ">Imagen</th>
+              <th class="font-medium text-left text-base px-6 py-2 ">Nombre</th>
+              <th class="font-medium text-left text-base px-6 py-2 ">Precio</th>
+              <th class="font-medium text-left text-base px-6 py-2 ">Descripción</th>
+              <th class="font-medium text-left text-base px-6 py-2 ">Categoría</th>
+              <th class="font-medium text-left text-base px-6 py-2 ">Código</th>
+              <th class="font-medium text-left text-base px-6 py-2 ">Stock</th>
+              <th class="font-medium text-right text-base px-6 py-2 ">Acciones</th>
+            </tr>
+          </thead>
+
+
+          <tbody id="productsContainer">
+
+
+            {{#each products.payload}}
+              <tr class="border-b border-black/10 text-left hover:bg-black/10" >
+                <td class="px-2 py-2 cursor-pointer">
+                  <img class="w-36 h-28 object-cover rounded-md" src="{{this.thumbnails.[0]}}" alt="{{this.title}}">
+                </td>
+                <td class="px-6 py-2">{{this.title}}</td>
+                <td class="px-6 py-2">${{this.price}}</td>
+                <td class="px-6 py-2">{{this.description}}</td>
+                <td class="px-6 py-2 capitalize">{{this.category}}</td>
+                <td class="px-6 py-2">{{this.code}}</td>
+                <td class="px-6 py-2">{{this.stock}}</td>
+                <td class="px-6 py-2 ">
+                  {{> itemDropdown id=this.id}}
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <p>No hay productos</p>
+      {{/if}}
+
+      {{#if products}}
+      <div class="py-6 flex justify-end items-center" id="paginationContainer">
+        {{> pagination pagination=products}}
+      </div>
+      {{/if}}
+    </article>
+  </section>
+
+
+  <button id="modalFormBtn"
+    class="cursor-pointer font-medium text-sm flex items-center justify-center px-5 py-2 rounded-md border border-black/10 text-white bg-black hover:bg-black/90 gap-2 my-6 text-lg">
+    Agregar Producto
+  </button>
+
+  {{> formProducts}}
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/cartFunctions.js"></script>
+    <script src="/realTimeFuncionality.js"></script>
+    <script src="/fetchActions.js"></script>
+    <script src="/modalFunctions.js"></script>
+    <script src="/main.js"></script>
+</main>

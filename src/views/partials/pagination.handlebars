@@ -1,0 +1,22 @@
+<nav class="flex justify-between items-center" id="paginationContainer">
+  <button
+    class="btn-change-page prev cursor-pointer font-medium text-sm flex items-center justify-center px-3 py-2 rounded-l-md border border-white/30 text-white bg-black hover:bg-black/90"
+    id="{{pagination.prevPage}}"
+  >
+    <i class="ri-arrow-left-line"></i>
+  </button>
+
+  <span
+    class="font-medium text-sm flex items-center justify-center px-3 py-2 border border-white/30 text-white bg-black hover:bg-black/90"
+    id="paginationPage"
+  >
+    {{pagination.page}}
+  </span>
+
+  <button
+    class="btn-change-page next cursor-pointer font-medium text-sm flex items-center justify-center px-3 py-2 rounded-r-md border border-white/30 text-white bg-black hover:bg-black/90"
+    id="{{pagination.nextPage}}"
+  >
+    <i class="ri-arrow-right-line"></i>
+  </button>
+</nav>

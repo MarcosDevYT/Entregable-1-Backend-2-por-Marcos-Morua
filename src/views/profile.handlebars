@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Perfil de Usuario</div>
+                <div class="card-body">
+                    <h5 class="card-title">Bienvenido, {{user.first_name}} {{user.last_name}}</h5>
+                    <p class="card-text"><strong>Correo Electrónico:</strong> {{user.email}}</p>
+                    <p class="card-text"><strong>Edad:</strong> {{user.age}}</p>
+                    <p class="card-text"><strong>Rol:</strong> {{user.role}}</p>
+                    <a href="/api/sessions/logout" class="btn btn-danger">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

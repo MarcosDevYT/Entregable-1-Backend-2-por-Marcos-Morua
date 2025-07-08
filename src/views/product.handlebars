@@ -1,0 +1,67 @@
+<main class="container mx-auto py-6 px-4">
+
+  <p class="hidden" id="cartId">{{cartId}}</p>
+
+  {{#if product}}
+    <section class="flex flex-col lg:flex-row justify-between gap-8">
+
+      <figure
+        class="p-8 border rounded-lg border-black/10 shadow-lg bg-white flex flex-col flex-1 md:w-[40%]"
+      >
+        <img
+          class="w-full h-full max-h-[450px] object-cover rounded-lg"
+          src="{{product.thumbnails}}"
+          alt="{{product.title}}"
+        />
+      </figure>
+
+      <article
+        class="relative py-8 px-8 border rounded-lg border-black/10 shadow-lg bg-white flex flex-col md:w-[60%]"
+      >
+        <div class="absolute top-3 right-3">
+          <p
+            class="font-medium text-base px-4 py-2 bg-black border-black/10 text-white rounded-full"
+          >{{product.category}}
+          </p>
+        </div>
+
+        <div class="flex flex-col w-full gap-2">
+          <h1 class="font-semibold text-5xl md:text-6xl">
+            {{product.title}}
+          </h1>
+
+          <p
+            class="font-medium text-base text-gray-700"
+          >{{product.description}}</p>
+          <p class="font-semibold">Stock: {{product.stock}}</p>
+          <p class="font-semibold">Codigo: {{product.code}}</p>
+
+        </div>
+
+        <div class="flex flex-col justify-end gap-4 h-full">
+          <p class="font-semibold text-4xl">Precio: ${{product.price}}</p>
+
+          <button
+            onclick="handleAddProductToCart('{{product.title}}', {{product.id}})"
+            class="cursor-pointer text-sm flex items-center w-full justify-center px-3 py-2 rounded-md border border-black/10 text-white bg-black hover:bg-black/90 gap-2 md:text-xl text-lg"
+          >
+            <i class="ri-shopping-bag-3-line text-2xl"></i>
+            <span class="font-medium">
+              Agregar al carrito
+            </span>
+          </button>
+        </div>
+      </article>
+
+    </section>
+  {{else}}
+    <section class="p-8 border rounded-lg border-black/10 shadow-lg bg-white">
+      <p>No se encontro el producto</p>
+    </section>
+  {{/if}}
+
+  <div id="ModalContainer" class="fixed bottom-8 right-8 z-50"></div>
+
+  <script src="/fetchActions.js"></script>
+  <script src="/cartFunctions.js"></script>
+</main>

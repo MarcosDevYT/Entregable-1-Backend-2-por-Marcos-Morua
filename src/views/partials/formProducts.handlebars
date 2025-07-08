@@ -1,0 +1,90 @@
+<div id="modalContainer" class="hidden fixed inset-0 z-10 items-center justify-center">
+  <div class="relative w-full h-full">
+
+    <div id="modalBackground" class="modal-background inset-0 absolute bg-black/50"></div>
+    <form id="modalForm" enctype="multipart/form-data" class="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+
+      <div class="flex flex-col gap-2 modal-form max-w-2xl max-h-[70vh] bg-slate-50 px-6 py-8 rounded-md relative">
+
+        <span id="closeModalBtn"
+          class="absolute top-2 right-2 cursor-pointer font-medium text-lg flex items-center justify-center size-8 rounded-md border border-black/10 text-white bg-black hover:bg-black/90">
+          <i class="ri-close-line"></i>
+        </span>
+
+        <div class="flex flex-col gap-1 mb-3">
+          <h2 class="text-xl font-medium">Agrega un Producto</h2>
+          <p class="text-sm text-muted-foreground">Escribe los datos del producto que deseas agregar</p>
+        </div>
+
+        <div class="border border-black/10 rounded-md flex flex-col gap-2 overflow-y-auto max-h-[50vh] p-1 py-2 pr-2">
+
+          <!-- Inputs -->
+
+          <input type="hidden" name="id" id="productId">
+
+          {{> input name="title" label="Titulo" type="text" placeholder="Titulo" required="true"}}
+          {{> input name="description" label="Descripcion" type="text" placeholder="Descripcion" required="true"}}
+          {{> input name="price" label="Precio" type="number" placeholder="Precio" min="0" required="true"}}
+          {{> input name="category" label="Categoria" type="text" placeholder="Categoria" required="true"}}
+
+
+
+
+          <div class="flex gap-2 w-full">
+            {{> input name="code" label="Codigo" type="text" placeholder="Codigo" required="true"}}
+            {{> input name="stock" label="Stock" type="number" placeholder="Stock" min="0" required="true"}}
+          </div>
+
+          <div class="flex flex-col mt-4 gap-4">
+            <p class="text-base font-medium">Agrega la URL o sube la imagen</p>
+            <div class="flex gap-4">
+              <label class="flex items-center gap-2">
+                <input type="radio" name="imageType" value="url" checked class="image-type-radio cursor-pointer"
+                  data-target="urlInput">
+                <span class="text-sm cursor-pointer">URL</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="imageType" value="file" class="image-type-radio cursor-pointer"
+                  data-target="fileInput">
+                <span class="text-sm cursor-pointer">Subir archivo</span>
+              </label>
+            </div>
+
+            <!-- Input para URL -->
+            <div id="urlInput" class="image-input">
+              {{> input 
+                    name="imageUrl" 
+                    label="URL de la imagen" 
+                    type="url" 
+                    placeholder="https://ejemplo.com/imagen.jpg"
+              }}
+            </div>
+
+            <!-- Input para subir archivo -->
+            <div id="fileInput" class="image-input hidden">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Subir imagen</label>
+              <input type="file" 
+                    name="imageFile" 
+                    id="imageFile" 
+                    accept="image/*" 
+                    class="block w-full text-sm text-gray-500
+                            file:mr-4 file:py-2 file:px-4
+                            file:rounded-md file:border-0
+                            file:text-sm file:font-semibold
+                            file:bg-black file:text-white
+                            hover:file:bg-black/90">
+            </div>
+
+          </div>
+        </div>
+
+        <button
+          id="submitBtn"
+          class="cursor-pointer font-medium text-sm flex items-center justify-center px-3 py-2 rounded-md border border-black/10 text-white bg-black hover:bg-black/90 gap-2"
+          type="submit">
+          Agregar Producto
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+.work-sans {
+  font-family: "Work Sans", sans-serif;
+}
+
+.popModal {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.popModal .fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}

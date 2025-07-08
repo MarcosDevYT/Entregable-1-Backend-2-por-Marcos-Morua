@@ -1,0 +1,28 @@
+<form
+  class="p-4 mb-4 border rounded-lg border-black/10 shadow-lg bg-white relative"
+  id="searchForm"
+>
+  <input
+    type="text"
+    name="query"
+    id="searchInput"
+    placeholder="Buscar producto"
+    class="w-full px-3 py-2 pr-12 md:pr-28 rounded-full border border-black/30 focus:border-black/30 focus:outline-none focus:ring-2 focus:ring-black/30 bg-black/10 placeholder:text-black/70 text-black"
+  />
+
+  <div class="flex items-center gap-1 absolute right-[19px] top-[19px]">
+    <button
+      class="cursor-pointer text-white bg-black hover:bg-black/90 rounded-full p-1 px-2 flex items-center justify-center gap-2"
+      id="searchBtn"
+    >
+      <i class="ri-search-line text-xl"></i>
+    </button>
+
+    <span
+      class="hidden cursor-pointer text-white bg-black hover:bg-black/90 rounded-full p-1 px-2 flex items-center justify-center gap-2"
+      id="clearBtn"
+    >
+      <i class="ri-close-line text-xl"></i>
+    </span>
+  </div>
+</form>

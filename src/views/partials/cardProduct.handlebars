@@ -1,0 +1,65 @@
+<div
+  id="producto-{{id}}"
+  class="productCard w-full mx-auto mt-6 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200"
+>
+  <div class="md:flex">
+    <div class="md:shrink-0">
+
+      <a href="/products/{{id}}">
+
+        <img
+          class="h-52 w-full object-cover md:w-48 md:h-64"
+          src="{{thumbnails}}"
+          alt="Producto"
+        />
+      </a>
+    </div>
+    <div class="relative flex flex-col justify-between p-4 w-full">
+      <div class="flex flex-col gap-2">
+        <a href="/products/{{id}}" class="w-max mr-10">
+          <h2
+            class="productTitle w-max text-xl font-semibold text-gray-900"
+          >{{title}}</h2>
+        </a>
+        <p class="text-gray-600">{{description}}</p>
+        <p class="text-sm text-gray-500 font-medium">Código: {{code}}</p>
+        <p class="text-sm text-gray-500 font-medium">Categoría:
+          {{category}}</p>
+        <p class="text-sm text-gray-500 font-medium">Precio Unitario: $<span
+            class="precioUnitario"
+          >{{price}}</span></p>
+
+        <button
+          class="cursor-pointer absolute top-4 right-4 text-2xl"
+          onclick="handleDeleteProduct('{{cartId}}', '{{id}}', '{{title}}')"
+        >
+          <i class="ri-delete-bin-line"></i>
+        </button>
+      </div>
+      <div class="mt-4 flex justify-between items-center w-full">
+        <div class="text-gray-900 font-semibold text-lg">Precio Total: $<span
+            class="precioTotal"
+          >{{price}}</span></div>
+        <div class="flex justify-between items-center">
+          <button
+            class="cursor-pointer font-medium text-sm flex items-center justify-center px-3 py-2 rounded-l-md border border-white/30 text-white bg-black hover:bg-black/90 btnSumarCarrito"
+          >
+            <i class="ri-add-line"></i>
+          </button>
+
+          <span
+            class="cantidadProducto font-medium text-sm flex items-center justify-center px-3 py-2 border border-white/30 text-white bg-black hover:bg-black/90"
+          >
+            {{quantity}}
+          </span>
+
+          <button
+            class="cursor-pointer font-medium text-sm flex items-center justify-center px-3 py-2 rounded-r-md border border-white/30 text-white bg-black hover:bg-black/90 btnRestarCarrito"
+          >
+            <i class="ri-subtract-line"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

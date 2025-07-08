@@ -1,0 +1,110 @@
+<header
+  class="sticky top-0 left-0 right-0 w-full h-18 z-50 shadow-md border-b border-black/10 bg-slate-50"
+>
+  <nav class="container mx-auto flex items-center justify-between h-full px-4">
+
+    <a href="/">
+      <h1 class="font-medium text-lg">Gestor de Productos</h1>
+    </a>
+
+    <div class="flex items-center justify-center gap-2">
+
+      {{#if user}}
+
+        <a
+          href="/cart"
+          class="font-medium text-xl flex w-full px-3 py-2 rounded-full border border-black/10 hover:bg-black/5 gap-2 relative"
+          id="cartLink"
+        >
+          <i class="ri-shopping-bag-3-line"></i>
+
+          <span
+            id="cartCount"
+            class="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 bg-red-500 rounded-full text-xs text-white"
+          >0</span>
+        </a>
+
+      
+
+      <div class="relative">
+
+        <div
+          id="userBtn"
+          class="text-xl flex items-center rounded-full border border-black/10 p-2 px-3 hover:bg-black/5 cursor-pointer"
+        >
+          <i class="ri-user-line"></i>
+
+        </div>
+
+        <ul
+          id="userMenu"
+          class="hidden border border-black/50 rounded-lg shadow-lg flex flex-col absolute top-12 right-0 bg-white w-52"
+        >
+          <li class="p-2 px-3 border-b border-black/50">
+            <p class="font-serif font-medium text-base">
+              Bienvenido,
+              {{user.first_name}}
+            </p>
+          </li>
+
+          
+            <li>
+              <a
+                href="/profile"
+                class="font-medium text-sm flex w-full px-3 py-2 border-b border-black/10 hover:bg-black/5 gap-2"
+              >
+                <i class="ri-user-line"></i>
+                <span>
+                  Perfil
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/products"
+                class="font-medium text-sm flex w-full px-3 py-2 border-b border-black/10 hover:bg-black/5 gap-2"
+              >
+                <i class="ri-list-check"></i>
+                <span>
+                  Productos
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/realtimeproducts"
+                class="font-medium text-sm flex w-full px-3 py-2 border-b border-black/10 hover:bg-black/5 gap-2"
+              >
+                <i class="ri-time-line"></i>
+                <span>
+                  Listado en tiempo real
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/api/sessions/logout"
+                class="font-medium text-sm flex w-full px-3 py-2 border-b border-black/10 hover:bg-black/5 gap-2"
+              >
+                <i class="ri-logout-box-line"></i>
+                <span>
+                  Cerrar Sesión
+                </span>
+              </a>
+            </li>
+          
+        </ul>
+
+        {{else}}
+
+        {{> authComponent}}
+
+      {{/if}}
+      </div>
+
+    </div>
+  </nav>
+</header>
